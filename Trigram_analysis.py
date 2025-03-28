@@ -10,7 +10,7 @@ print("\nStep 1 Ciphertext Preview:")
 print(ciphertext[:100])
 
 # === Visual Analysis Example ===
-print("\nStep 1.1 for explanation purpose:")
+print("\nStep 1.1 for visualization purpose:")
 for i in range(0,20):
     if i < 10:
         print(str(i) + "-"*9, end="")
