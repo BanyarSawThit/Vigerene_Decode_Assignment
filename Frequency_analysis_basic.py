@@ -1,5 +1,6 @@
 from collections import Counter
 import matplotlib.pyplot as plt
+import string
 
 # === Step 0: Load and clean ciphertext ===
 with open("input/cipher_8.txt", "r") as f:
@@ -32,19 +33,19 @@ for i, group in enumerate(groups):
         print(f"{letter}: {count} ({percentage}%)")
     print()
 
-# # === Step 3: Frequency Distribution Diagram ===
-# for i, group in enumerate(groups):
-#     freq = Counter(group)
-#     letters, counts = zip(*sorted(freq.items()))
-#     plt.figure()
-#     plt.bar(letters, counts)
-#     plt.title(f"Letter Frequency in Column {i+1}")
-#     plt.xlabel("Letter")
-#     plt.ylabel("Count")
-#     plt.show()
+# === Step 3: Frequency Distribution Diagram ===
+for i, group in enumerate(groups):
+    freq = Counter(group)
+    # Create lists for all letters A-Z, using 0 if the letter is missing
+    letters = list(string.ascii_uppercase)
+    counts = [freq.get(letter, 0) for letter in letters]
+
+    plt.figure()
+    plt.bar(letters, counts)
+    plt.title(f"Letter Frequency in Column {i + 1}")
+    plt.show()
 
 # === Step 4: Guess the Caesar Shift
-
 # For the purpose of an initial test, we assume 'E' is the most frequent letter in English.
 most_frequent_letter = ['E']
 # list of observed most frequent letter per group
